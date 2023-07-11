@@ -1,0 +1,105 @@
+.parent {
+    height: 100vh;
+
+}
+
+/* .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+} */
+.textLogo h3 {
+    text-align: center;
+}
+
+.textLogo h2 {
+    text-align: center;
+}
+
+.vertical-spacing {
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+}
+
+.button-group .btn {
+    background-color: none;
+    color: black;
+    border: none;
+    border-radius: 12px;
+    width: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.button-group .btn.active {
+    background-color: white;
+    color: black;
+    font-weight: 500;
+}
+
+
+
+.input-group-text.line {
+    border-left: 1px solid #ced4da;
+    background-color: transparent;
+    height: 38px;
+}
+
+.input-group-text i {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.btn-primary {
+    border-radius: 12px;
+    width: 100%;
+    background-color: #F9342E;
+    color: white;
+    border: none;
+}
+
+.select-role {
+    border-radius: 12px;
+    width: 100%;
+    background-color: rgb(223, 221, 221);
+
+}
+
+.round-border {
+    border-radius: 12px;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 14px;
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.or-divider hr {
+    flex-grow: 1;
+    border: none;
+    height: 1px;
+    background-color: #000;
+    margin-left: 2px;
+    margin-right: 2px;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+}
