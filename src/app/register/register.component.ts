@@ -78,14 +78,14 @@ export class RegisterComponent {
             this.toastr.error('Email already exists');
           } else {
             const role = this.employerActive ? 'employer' : 'consultant';
-            this.service.proceedRegister(this.registerForm.value, role).subscribe(res => {
-              if (res && res.success) {
-                this.toastr.success('Registered Successfully');
-                this.isRegisterMode = false;
-              } else {
-                this.toastr.error('Registration Failed email alrady exists');
-              }
+            const password = this.registerForm.value.password;
+            this.service.proceedRegister({ email, password }, role).subscribe(res => {
+              this.toastr.success('Registered Successfully');
+              this.isRegisterMode = false;
+            }, error => {
+              this.toastr.error(error.message || 'Registration Failed');
             });
+
           }
         });
       }
