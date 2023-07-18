@@ -6,15 +6,13 @@ import { Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  static isLoggedIn() {
-    throw new Error('Method not implemented.');
-  }
 
   constructor(private http: HttpClient) {
 
   }
 
   apiUrl = ' http://localhost:8080/users'
+  jwtToken: string | null = null;
   GetAll() {
     return this.http.get(this.apiUrl);
   }
@@ -43,6 +41,7 @@ export class AuthService {
     const userData = { email, password, role: role };
 
     return this.http.post(`${this.apiUrl}/register`, userData).pipe(
+
       catchError((error) => {
         if (error.status === 409 && error.error === 'Email already exists') {
           return throwError({ success: false, message: 'Email already exists' });
@@ -65,15 +64,15 @@ export class AuthService {
     );
   }
 
-
-
-
-
-  IsLoggedIn() {
-    return sessionStorage.getItem('email') != null;
+  isLoggedIn(): boolean {
+    return sessionStorage.getItem("jwtToken") !== null;
   }
 
-  GetUserRole() {
-    return sessionStorage.getItem('role') != null ? sessionStorage.getItem('role')?.toString() : '';
+  getJwtToken(): string | null {
+    return this.jwtToken;
+  }
+
+  getUserRole(): string {
+    return sessionStorage.getItem('role') || '';
   }
 }

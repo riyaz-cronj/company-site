@@ -89,7 +89,8 @@ export class RegisterComponent {
           }
         });
       }
-    } else if (!this.isRegisterMode && this.registerForm.controls.email.valid && this.registerForm.controls.password.valid) {
+    } //login logic
+    else if (!this.isRegisterMode && this.registerForm.controls.email.valid && this.registerForm.controls.password.valid) {
       const email = this.registerForm.value.email;
       const password = this.registerForm.value.password;
       const role = this.employerActive ? 'employer' : 'consultant'; // Get the selected role
@@ -99,7 +100,9 @@ export class RegisterComponent {
           if (res) {
             sessionStorage.setItem('email', res.email);
             sessionStorage.setItem('role', res.role);
+            sessionStorage.setItem('jwtToken', res.jwtToken);
             this.router.navigate(['home']);
+            console.log(res);
           } else {
             this.toastr.error('Invalid Credentials');
           }
