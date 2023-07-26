@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+    --primary-color: #F9342E;
+    /* Replace with your desired primary color */
+}
 
 html,
 body {
@@ -10,3 +14,7 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* .primary-color {
+    color: #F9342E;
+} */

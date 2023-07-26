@@ -1,1 +1,93 @@
-<p>edit-profile works!</p>
+<body>
+    <form [formGroup]="employerProfileForm" (ngSubmit)="onFormSubmit(employerProfileForm)">
+        <!-- <app-header></app-header> -->
+        <div class="container col-sm-12">
+            <div class="header">
+                <span class="header-title">Set Employer Profile</span>
+                <button type="submit" class="save-button">
+                    <img src="../../assets/right.png" alt="Save">
+                    SAVE
+                </button>
+            </div>
+            <div class="card">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-sm-8 col-md-4" style="text-align: center;">
+                        <!-- Image Upload -->
+                        <label for="imageUpload">
+                            <img [src]="selectedImage || '../../assets/photo_upload.png'" alt="Upload Company Logo"
+                                class="upload-image">
+                        </label>
+                        <input type="file" id="imageUpload" style="display: none;" (change)="onImageSelected($event)"
+                            class="form-control" formControlName="profileImage">
+                        <div class="upload-label">Upload Company Logo</div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <!-- Company Name, Type, and ID Number -->
+                    <div class="col-sm-12 col-md-4 position-relative mb-2">
+                        <label for="companyName"
+                            style="position: absolute; top: -10px; left: 20px; font-size: 12px; font-weight: bold; background-color: white; padding: 0 5px;">Company
+                            Name</label>
+                        <input type="text" id="companyName" placeholder="Google" class="form-control"
+                            formControlName="companyName"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('companyName')?.invalid && employerProfileForm.get('companyName')?.touched }" />
+                    </div>
+                    <div class="col-sm-12 col-md-4 mb-2">
+                        <input type="text" placeholder="Industry Type" class="form-control"
+                            formControlName="industryType"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('industryType')?.invalid && employerProfileForm.get('industryType')?.touched }" />
+                    </div>
+                    <div class="col-sm-12 col-md-4 mb-2">
+                        <input type="text" placeholder="Company ID Number" class="form-control"
+                            formControlName="companyIdNumber"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('companyIdNumber')?.invalid && employerProfileForm.get('companyIdNumber')?.touched }" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <!-- Company Website and Email -->
+                    <div class="col-sm-12 col-md-6 mb-2" style="position: relative;">
+                        <input type="text" placeholder="Company Website URL" class="form-control"
+                            formControlName="websiteUrl"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('websiteUrl')?.invalid && employerProfileForm.get('websiteUrl')?.touched }" />
+                        <button (click)="onPasteButtonClick()" class="paste-button">Paste</button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 mb-2">
+                        <input type="email" placeholder="Email" class="form-control" formControlName="email"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('email')?.invalid && employerProfileForm.get('email')?.touched }" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <!-- Description -->
+                    <div class="col-12">
+                        <textarea style="width: 100%;" placeholder="Write about company..." rows="4"
+                            class="form-control" formControlName="description"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('description')?.invalid && employerProfileForm.get('description')?.touched }">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Company Size, Founded In, and Location -->
+                    <div class="col-sm-12 col-md-4 mb-2">
+                        <input type="number" placeholder="Company Size" class="form-control"
+                            formControlName="companySize"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('companySize')?.invalid && employerProfileForm.get('companySize')?.touched }" />
+                    </div>
+                    <div class="col-sm-12 col-md-4 mb-2">
+                        <mat-select class="form-control" formControlName="foundedIn" placeholder="Founded In"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('foundedIn')?.invalid && employerProfileForm.get('foundedIn')?.touched }">
+                            <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+                        </mat-select>
+                    </div>
+                    <!-- <div class="col-sm-12 col-md-4 mb-2">
+                        <input id="datepicker" class="form-control" formControlName="foundedIn"
+                            placeholder="Founded In">
+                    </div> -->
+                    <div class="col-sm-12 col-md-4 mb-2">
+                        <input type="text" placeholder="Location" class="form-control" formControlName="location"
+                            [ngClass]="{ 'has-error': employerProfileForm.get('location')?.invalid && employerProfileForm.get('location')?.touched }" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>

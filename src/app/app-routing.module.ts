@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guard/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-profile', component: EditProfileComponent
   }
 ];
 
